@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
     public float constantVelocity = 1.0f;
     public float impulseMagnitude = 1.0f;
