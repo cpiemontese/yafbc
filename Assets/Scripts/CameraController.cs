@@ -29,11 +29,6 @@ public class CameraController : MonoBehaviour
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "Player") {
-            other.transform.SetPositionAndRotation(Vector3.zero, other.transform.rotation);
-            other.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        } else {
-            Destroy(other.gameObject);
-        }
+        Destroy(other.gameObject);
     }
 }
