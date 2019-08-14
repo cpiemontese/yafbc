@@ -1,21 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class MovementController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    public Text timeInFlightText;
     public float constantVelocity = 1.0f;
     public float impulseMagnitude = 1.0f;
 
     private bool jumped = false;
+    private Rigidbody2D rigidbody2d;
+    private float timeInFlight = 0.0f;
+
+    public void Reset() {
+        timeInFlight = 0.0f;
+        transform.SetPositionAndRotation(Vector3.zero, transform.rotation);
+        rigidbody2d.velocity = Vector2.zero;
+    }
 
     // Start is called before the first frame update
     void Start() {
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update() {
         jumped = Input.GetKeyDown(KeyCode.Space);
+        timeInFlight += Time.deltaTime;
+        timeInFlightText.text = TimeSpan.FromSeconds(timeInFlight).ToString(@"hh\:mm\:ss"); 
     }
 
     void FixedUpdate() {

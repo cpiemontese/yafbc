@@ -16,8 +16,7 @@ public class TileController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player") {
-            other.transform.SetPositionAndRotation(Vector3.zero, other.transform.rotation);
-            other.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            other.gameObject.GetComponent<PlayerController>().Reset();
         }
     }
 }

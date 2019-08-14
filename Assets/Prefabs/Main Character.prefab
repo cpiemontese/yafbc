@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5203325634772116104}
   - component: {fileID: 5203325634772116106}
   - component: {fileID: 5203325634772116108}
-  - component: {fileID: 5203325634772116107}
+  - component: {fileID: 607554529037841968}
   m_Layer: 0
   m_Name: Main Character
   m_TagString: Player
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.37465736, y: 0.62651557}
   m_EdgeRadius: 0
---- !u!114 &5203325634772116107
+--- !u!114 &607554529037841968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,8 +140,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5203325634772116119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99249f3be9d03494fab0a130cbfa7df6, type: 3}
+  m_Script: {fileID: 11500000, guid: 1af6124cf826108428e75adefb7fce9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constantVelocity: 2
-  impulseMagnitude: 1.5
+  timeInFlightText: {fileID: 0}
+  constantVelocity: 1
+  impulseMagnitude: 1
