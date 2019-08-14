@@ -66,6 +66,5 @@ public class CameraController : MonoBehaviour
         var oldY = other.gameObject.GetComponent<Rigidbody2D>().position.y;
         var newX = topRight.x + 1.5f;
         other.gameObject.transform.SetPositionAndRotation(new Vector3(newX, oldY), Quaternion.identity);
-        //other.gameObject.GetComponent<Rigidbody2D>().MovePosition(new Vector2(newX, oldY));
     }
 }

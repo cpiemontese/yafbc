@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7ed3e165d5a3d42aa42d96d8e76afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementTimer: 0.5
 --- !u!50 &913662068005882420
 Rigidbody2D:
   serializedVersion: 4
@@ -106,7 +105,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913662068005882416}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -157,4 +156,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7ed3e165d5a3d42aa42d96d8e76afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementTimer: 1
