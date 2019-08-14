@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7510453287658810071}
   - component: {fileID: 2437062176194514653}
   m_Layer: 0
-  m_Name: Floor
+  m_Name: Bottom Tile
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7167748653520127785}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -104,7 +104,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!61 &7510453287658810071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,3 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7ed3e165d5a3d42aa42d96d8e76afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementTimer: 1

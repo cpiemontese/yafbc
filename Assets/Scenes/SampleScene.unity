@@ -160,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1d658d5ba60174b93a3e66bf79e52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAt: {fileID: 1366970513}
   topTile: {fileID: 913662068005882416, guid: a1b0e0d388ac8ab4eb6108d43fce98ea, type: 3}
   bottomTile: {fileID: 7167748653520127785, guid: 33e960a614e5ba9489a84197a0b1678c,
     type: 3}
@@ -247,12 +246,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 3}
   m_EdgeRadius: 0
---- !u!4 &1366970513 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5203325634772116105, guid: 43d781991258fdc4689e128ae6a81c8c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5203325636096881176}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5203325636096881176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -324,6 +317,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203325634772116107, guid: 43d781991258fdc4689e128ae6a81c8c,
+        type: 3}
+      propertyPath: impulseMagnitude
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43d781991258fdc4689e128ae6a81c8c, type: 3}
