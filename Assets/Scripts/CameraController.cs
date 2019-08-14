@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float tileMovementInterval = 1.0f;
+    public float tileMovementSpeed = 1.0f;
     public GameObject topTile;
     public GameObject bottomTile;
-
-    float timeSinceLastTileMovement = 0.0f;
 
     List<GameObject> topTiles;
     List<GameObject> bottomTiles;
@@ -40,7 +38,7 @@ public class CameraController : MonoBehaviour
         var topY = topRight.y - 0.5f;
         var bottomY = bottomRight.y + 0.5f;
 
-        for (float d = bottomLeft.x + 0.5f; d < -12f; d++) {
+        for (float d = bottomLeft.x + 0.5f; d < bottomRight.x + 2.5f; d++) {
             var newTopTile = Instantiate(topTile, new Vector3(d, topY), Quaternion.identity);
             var newBottomTile = Instantiate(bottomTile, new Vector3(d, bottomY), Quaternion.identity);
             topTiles.Add(newTopTile);
@@ -58,14 +56,10 @@ public class CameraController : MonoBehaviour
     }
 
     void FixedUpdate() {
-        timeSinceLastTileMovement += Time.fixedDeltaTime;
-        if (timeSinceLastTileMovement >= tileMovementInterval) {
-            timeSinceLastTileMovement -= tileMovementInterval;
-            zippedTiles.ForEach(tuple => {
-                tuple.Item1.MovePosition(new Vector2(tuple.Item1.position.x - 0.5f, tuple.Item1.position.y));
-                tuple.Item2.MovePosition(new Vector2(tuple.Item2.position.x - 0.5f, tuple.Item2.position.y));
-            });
-        }
+        zippedTiles.ForEach(tuple => {
+            tuple.Item1.MovePosition(new Vector2(tuple.Item1.position.x - tileMovementSpeed * Time.fixedDeltaTime, tuple.Item1.position.y));
+            tuple.Item2.MovePosition(new Vector2(tuple.Item2.position.x - tileMovementSpeed * Time.fixedDeltaTime, tuple.Item2.position.y));
+        });
     }
 
     void OnTriggerExit2D(Collider2D other) {
