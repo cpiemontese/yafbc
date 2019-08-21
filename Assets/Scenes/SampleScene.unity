@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1d658d5ba60174b93a3e66bf79e52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnTimer: 1
+  spawnProbability: 0.25
   tileMovementSpeed: 2
   topTile: {fileID: 913662068005882416, guid: a1b0e0d388ac8ab4eb6108d43fce98ea, type: 3}
   bottomTile: {fileID: 7167748653520127785, guid: 33e960a614e5ba9489a84197a0b1678c,
