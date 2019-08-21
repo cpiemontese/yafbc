@@ -61,12 +61,17 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeSinceLastSpawn >= spawnTimer && UnityEngine.Random.Range(0f, 1f) < spawnProbability)
+        if (timeSinceLastSpawn >= spawnTimer)
         {
-            var obstacle = obstacleGeneratorController.GenerateObstacle(Mathf.RoundToInt(cameraHeight));
-            obstacle.transform.SetPositionAndRotation(new Vector3(bottomRight.x + 1.5f, bottomRight.y + 1.5f, 0), Quaternion.identity);
-            obstacles.Enqueue(obstacle);
-            timeSinceLastSpawn -= 1.0f;
+            var p = UnityEngine.Random.Range(0.0f, 1.0f);
+            Debug.Log(p);
+            if (p < spawnProbability)
+            {
+                var obstacle = obstacleGeneratorController.GenerateObstacle(Mathf.RoundToInt(cameraHeight));
+                obstacle.transform.SetPositionAndRotation(new Vector3(bottomRight.x + 1.5f, bottomRight.y + 1.5f, 0), Quaternion.identity);
+                obstacles.Enqueue(obstacle);
+            }
+            timeSinceLastSpawn -= spawnTimer;
         }
         timeSinceLastSpawn += Time.deltaTime;
     }
