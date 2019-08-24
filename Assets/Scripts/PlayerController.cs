@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     void Update() {
         jumped = Input.GetKeyDown(KeyCode.Space);
         timeInFlight += Time.deltaTime;
-        timeInFlightText.text = TimeSpan.FromSeconds(timeInFlight).ToString(@"hh\:mm\:ss"); 
+        timeInFlightText.text = "Time in flight: " + TimeSpan.FromSeconds(timeInFlight).ToString(@"hh\:mm\:ss"); 
     }
 
     void FixedUpdate() {
