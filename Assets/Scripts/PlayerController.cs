@@ -37,4 +37,10 @@ public class PlayerController : MonoBehaviour
             rigidbody2D.AddForce(impulseMagnitude * Vector2.up, ForceMode2D.Impulse);
         }
     }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Tile") {
+            Reset();
+        }
+    }
 }
