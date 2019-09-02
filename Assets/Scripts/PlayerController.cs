@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public Text timeInFlightText;
     public float constantVelocity = 1.0f;
     public float impulseMagnitude = 1.0f;
+    public event EventHandler resetEventHandlers;
 
     private bool jumped = false;
     private Rigidbody2D rigidbody2d;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Tile") {
             Reset();
+            resetEventHandlers(this, null);
         }
     }
 }
