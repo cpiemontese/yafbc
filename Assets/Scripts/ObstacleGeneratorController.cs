@@ -25,8 +25,8 @@ public class ObstacleGeneratorController : MonoBehaviour
         obstacle.tag = "Obstacle";
         obstacle.AddComponent<BoxCollider2D>();
         var bc2d = obstacle.GetComponent<BoxCollider2D>();
-        bc2d.size = new Vector2(1f, 8f);
-        bc2d.offset = new Vector2(0f, 3.5f);
+        bc2d.size = new Vector2(1f, maxHeight);
+        bc2d.offset = new Vector2(0f, (maxHeight / 2.0f) - 0.5f);
         bc2d.isTrigger = true;
         obstacle.AddComponent<Rigidbody2D>();
         var rb2d = obstacle.GetComponent<Rigidbody2D>();
