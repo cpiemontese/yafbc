@@ -19,7 +19,8 @@ public class ObstacleGeneratorController : MonoBehaviour
     }
 
     public GameObject GenerateObstacle(int maxHeight) {
-        int height = Random.Range(1, maxHeight);
+        var topHeight = Mathf.Round(Random.Range(1f, maxHeight/2f));
+        var bottomHeight = Mathf.Round(Random.Range(1f, maxHeight/2f));
 
         GameObject obstacle = new GameObject("Obstacle Container");
         obstacle.AddComponent<BoxCollider2D>();
@@ -35,8 +36,6 @@ public class ObstacleGeneratorController : MonoBehaviour
         GameObject obstacleSubTop = new GameObject("Obstacle Sub Container Top");
         GameObject obstacleSubBot = new GameObject("Obstacle Sub Container Bot");
 
-        var bottomHeight = Mathf.Round(height/2f);
-        var topHeight = Mathf.Round(height/2f + 1f);
         SetupObstacleSubContainer(
             obstacleSubBot,
             obstacle.transform,
