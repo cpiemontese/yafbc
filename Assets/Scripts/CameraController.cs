@@ -103,9 +103,8 @@ public class CameraController : MonoBehaviour
     {
         if (other.tag == "Obstacle Container")
         {
-            Destroy(other.gameObject);
-            obstacles.Dequeue();
-        } else
+            Destroy(obstacles.Dequeue());
+        } else if (other.tag == "Tile")
         {
             var oldY = other.gameObject.GetComponent<Rigidbody2D>().position.y;
             var newX = topRight.x + 1.5f;
@@ -125,5 +124,9 @@ public class CameraController : MonoBehaviour
 
     void ResetEventHandler(object o, EventArgs e)
     {
+        while (obstacles.Count > 0)
+        {
+            Destroy(obstacles.Dequeue());
+        }
     }
 }
