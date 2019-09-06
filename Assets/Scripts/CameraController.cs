@@ -101,7 +101,7 @@ public class CameraController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Obstacle")
+        if (other.tag == "Obstacle Container")
         {
             Destroy(other.gameObject);
             obstacles.Dequeue();
