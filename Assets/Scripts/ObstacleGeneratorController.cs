@@ -49,11 +49,11 @@ public class ObstacleGeneratorController : MonoBehaviour
             new Vector2(0f, maxHeight - topHeight/2f + 0.5f));
 
         for (int i = 0; i < bottomHeight; i++) {
-            Instantiate(obstacleTile, new Vector3(0, i, 0), Quaternion.identity, obstacle.transform);
+            Instantiate(obstacleTile, new Vector3(0, i, 0), Quaternion.identity, obstacleSubBot.transform);
         }
 
         for (int i = maxHeight; i > maxHeight - topHeight; i--) {
-            Instantiate(obstacleTile, new Vector3(0, i, 0), Quaternion.identity, obstacle.transform);
+            Instantiate(obstacleTile, new Vector3(0, i, 0), Quaternion.identity, obstacleSubTop.transform);
         }
 
         return obstacle;
