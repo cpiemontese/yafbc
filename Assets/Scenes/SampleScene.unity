@@ -165,6 +165,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &393407314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5203325636096881176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af6124cf826108428e75adefb7fce9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +223,7 @@ MonoBehaviour:
   topTile: {fileID: 913662068005882416, guid: a1b0e0d388ac8ab4eb6108d43fce98ea, type: 3}
   bottomTile: {fileID: 7167748653520127785, guid: 33e960a614e5ba9489a84197a0b1678c,
     type: 3}
+  playerController: {fileID: 393407314}
   obstacleGeneratorController: {fileID: 154748245}
 --- !u!20 &519420031
 Camera:

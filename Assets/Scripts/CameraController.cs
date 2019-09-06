@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     public float tileMovementSpeed = 1.0f;
     public GameObject topTile;
     public GameObject bottomTile;
+    public PlayerController playerController;
     public ObstacleGeneratorController obstacleGeneratorController;
 
     Queue<GameObject> obstacles;
@@ -27,6 +28,8 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerController.resetEventHandlers += ResetEventHandler;
+
         var camera = GetComponent<Camera>();
         var collider2d = GetComponent<BoxCollider2D>();
 
@@ -44,6 +47,11 @@ public class CameraController : MonoBehaviour
         var bottomY = bottomRight.y + 0.5f;
         var topTilesContainer = new GameObject("Top tiles container");
         var bottomTilesContainer = new GameObject("Bottom tiles container");
+
+        var size = bottomRight.x + 2.5f - (bottomLeft.x + 0.5f);
+
+        SetupTilesContainer(topTilesContainer, new Vector2(size, 1f), new Vector2(0f, topY));
+        SetupTilesContainer(bottomTilesContainer, new Vector2(size, 1f), new Vector2(0f, bottomY));
 
         for (float d = bottomLeft.x + 0.5f; d < bottomRight.x + 2.5f; d++)
         {
@@ -103,5 +111,19 @@ public class CameraController : MonoBehaviour
             var newX = topRight.x + 1.5f;
             other.gameObject.transform.SetPositionAndRotation(new Vector3(newX, oldY), Quaternion.identity);
         }
+    }
+
+    void SetupTilesContainer(GameObject tileContainer, Vector2 size, Vector2 offset)
+    {
+        tileContainer.tag = "Floor";
+        tileContainer.AddComponent<BoxCollider2D>();
+        var bc2d = tileContainer.GetComponent<BoxCollider2D>();
+        bc2d.isTrigger = true;
+        bc2d.size = size;
+        bc2d.offset = offset;
+    }
+
+    void ResetEventHandler(object o, EventArgs e)
+    {
     }
 }
