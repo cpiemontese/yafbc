@@ -7,6 +7,8 @@ TagManager:
   - Tile
   - Obstacle
   - Floor
+  - Obstacle Container
+  - Obstacle Sub Container
   layers:
   - Default
   - TransparentFX

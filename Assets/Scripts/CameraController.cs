@@ -71,13 +71,13 @@ public class CameraController : MonoBehaviour
     {
         if (timeSinceLastSpawn >= spawnTimer)
         {
+            timeSinceLastSpawn -= spawnTimer;
             if (UnityEngine.Random.Range(0.0f, 1.0f) < spawnProbability)
             {
                 var obstacle = obstacleGeneratorController.GenerateObstacle(Mathf.RoundToInt(cameraHeight));
                 obstacle.transform.SetPositionAndRotation(new Vector3(bottomRight.x + 1.5f, bottomRight.y + 1.5f, 0), Quaternion.identity);
                 obstacles.Enqueue(obstacle);
             }
-            timeSinceLastSpawn -= spawnTimer;
         }
         timeSinceLastSpawn += Time.deltaTime;
     }
@@ -103,8 +103,10 @@ public class CameraController : MonoBehaviour
     {
         if (other.tag == "Obstacle Container")
         {
-            Destroy(obstacles.Dequeue());
-        } else if (other.tag == "Tile")
+            Destroy(other.gameObject);
+            obstacles.Dequeue();
+        }
+        else if (other.tag == "Tile")
         {
             var oldY = other.gameObject.GetComponent<Rigidbody2D>().position.y;
             var newX = topRight.x + 1.5f;

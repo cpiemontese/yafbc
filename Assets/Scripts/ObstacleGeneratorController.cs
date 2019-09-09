@@ -28,6 +28,7 @@ public class ObstacleGeneratorController : MonoBehaviour
         bc2d.size = new Vector2(1f, maxHeight + 1f);
         bc2d.offset = new Vector2(0f, ((maxHeight + 1f) / 2.0f) - 0.5f);
         bc2d.isTrigger = true;
+        // TODO: remove Rigidbody
         obstacle.AddComponent<Rigidbody2D>();
         var rb2d = obstacle.GetComponent<Rigidbody2D>();
         rb2d.isKinematic = true;
@@ -58,8 +59,11 @@ public class ObstacleGeneratorController : MonoBehaviour
         return obstacle;
     }
 
+    // TODO: add move method to move sub containers
+
     void SetupObstacleSubContainer(GameObject osc, Transform parentTransform, Vector2 size, Vector2 offset)
     {
+        // TODO: Add rigidbody
         osc.tag = "Obstacle Sub Container";
         osc.transform.parent = parentTransform;
         osc.AddComponent<BoxCollider2D>();
