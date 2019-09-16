@@ -37,17 +37,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Obstacle")
-        {
-            Reset();
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Floor" || other.gameObject.tag == "Obstacle Sub Container")
+        if (other.gameObject.tag == "Floor"
+            || other.gameObject.tag == "Obstacle Sub Bot"
+            || other.gameObject.tag == "Obstalce Sub Top")
         {
             Reset();
         }
@@ -60,7 +54,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2d.velocity = Vector2.zero;
         if (resetEventHandlers != null) 
         {
-            resetEventHandlers(this, null);
+            // resetEventHandlers(this, null);
         }
     }
 }

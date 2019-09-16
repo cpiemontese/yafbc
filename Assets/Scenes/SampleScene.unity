@@ -151,6 +151,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleTile: {fileID: 4269263835561340116, guid: 4bccd1b0885b12a45a6ab1ff217339cb,
     type: 3}
+  obstacleContainer: {fileID: 2684534952699602296, guid: 593c23f32ab50fe4ab109d1407a740d9,
+    type: 3}
+  obstacleSubContainer: {fileID: 7265879580781127392, guid: 004ea84504fd7014fadb147cb289fc7e,
+    type: 3}
 --- !u!4 &154748246
 Transform:
   m_ObjectHideFlags: 0
@@ -644,6 +648,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Character
       objectReference: {fileID: 0}
+    - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
+        type: 3}
+      propertyPath: timeInFlightText
+      value: 
+      objectReference: {fileID: 637392542}
+    - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
+        type: 3}
+      propertyPath: impulseMagnitude
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5203325634772116105, guid: 43d781991258fdc4689e128ae6a81c8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,16 +717,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
-        type: 3}
-      propertyPath: timeInFlightText
-      value: 
-      objectReference: {fileID: 637392542}
-    - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
-        type: 3}
-      propertyPath: impulseMagnitude
-      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43d781991258fdc4689e128ae6a81c8c, type: 3}

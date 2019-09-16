@@ -74,8 +74,10 @@ public class CameraController : MonoBehaviour
             timeSinceLastSpawn -= spawnTimer;
             if (UnityEngine.Random.Range(0.0f, 1.0f) < spawnProbability)
             {
-                var obstacle = obstacleGeneratorController.GenerateObstacle(Mathf.RoundToInt(cameraHeight));
-                obstacle.transform.SetPositionAndRotation(new Vector3(bottomRight.x + 1.5f, bottomRight.y + 1.5f, 0), Quaternion.identity);
+                var obstacle = obstacleGeneratorController.GenerateObstacle(
+                    Mathf.RoundToInt(cameraHeight),
+                    new Vector3(bottomRight.x + 1.5f, bottomRight.y + 1.5f, 0),
+                    Quaternion.identity);
                 obstacles.Enqueue(obstacle);
             }
         }
@@ -90,27 +92,21 @@ public class CameraController : MonoBehaviour
             tuple.Item2.MovePosition(new Vector2(tuple.Item2.position.x - movementMagnitude, tuple.Item2.position.y));
         });
 
-        foreach (var obstacle in obstacles)
-        {
-            obstacle.GetComponent<Rigidbody2D>().MovePosition(new Vector2(
-                obstacle.transform.position.x - movementMagnitude,
-                obstacle.transform.position.y
-            ));
-        }
+        obstacleGeneratorController.Move(obstacles, movementMagnitude);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Obstacle Container")
+        switch (other.tag)
         {
-            Destroy(other.gameObject);
-            obstacles.Dequeue();
-        }
-        else if (other.tag == "Tile")
-        {
-            var oldY = other.gameObject.GetComponent<Rigidbody2D>().position.y;
-            var newX = topRight.x + 1.5f;
-            other.gameObject.transform.SetPositionAndRotation(new Vector3(newX, oldY), Quaternion.identity);
+            case "Obstacle Sub Top":
+                Destroy(obstacles.Dequeue());
+                break;
+            case "Tile":
+                var oldY = other.gameObject.GetComponent<Rigidbody2D>().position.y;
+                var newX = topRight.x + 1.5f;
+                other.gameObject.transform.SetPositionAndRotation(new Vector3(newX, oldY), Quaternion.identity);
+                break;
         }
     }
 

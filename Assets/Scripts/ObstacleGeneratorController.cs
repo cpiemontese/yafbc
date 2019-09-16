@@ -5,6 +5,8 @@ using UnityEngine;
 public class ObstacleGeneratorController : MonoBehaviour
 {
     public GameObject obstacleTile;
+    public GameObject obstacleContainer;
+    public GameObject obstacleSubContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -18,58 +20,54 @@ public class ObstacleGeneratorController : MonoBehaviour
         
     }
 
-    public GameObject GenerateObstacle(int maxHeight) {
+    public GameObject GenerateObstacle(int maxHeight, Vector3 at, Quaternion rotation) {
         var topHeight = Mathf.Round(Random.Range(1f, maxHeight/2f));
         var bottomHeight = Mathf.Round(Random.Range(1f, maxHeight/2f));
 
-        GameObject obstacle = new GameObject("Obstacle Container");
-        obstacle.AddComponent<BoxCollider2D>();
-        var bc2d = obstacle.GetComponent<BoxCollider2D>();
-        bc2d.size = new Vector2(1f, maxHeight + 1f);
-        bc2d.offset = new Vector2(0f, ((maxHeight + 1f) / 2.0f) - 0.5f);
-        bc2d.isTrigger = true;
-        // TODO: remove Rigidbody
-        obstacle.AddComponent<Rigidbody2D>();
-        var rb2d = obstacle.GetComponent<Rigidbody2D>();
-        rb2d.isKinematic = true;
-        rb2d.constraints = RigidbodyConstraints2D.FreezePositionY;;
+        GameObject oc = Instantiate(obstacleContainer, at, rotation);
+        GameObject obstacleSubTop = Instantiate(obstacleSubContainer, at, rotation, oc.transform);
+        GameObject obstacleSubBot = Instantiate(obstacleSubContainer, at, rotation, oc.transform);
 
-        GameObject obstacleSubTop = new GameObject("Obstacle Sub Container Top");
-        GameObject obstacleSubBot = new GameObject("Obstacle Sub Container Bot");
+        obstacleSubTop.tag = "Obstacle Sub Top";
+        obstacleSubBot.tag = "Obstacle Sub Bot";
 
         SetupObstacleSubContainer(
             obstacleSubBot,
-            obstacle.transform,
+            oc.transform,
             new Vector2(1f, bottomHeight),
             new Vector2(0f, (bottomHeight - 1f)/2f));
+
         SetupObstacleSubContainer(
             obstacleSubTop,
-            obstacle.transform,
+            oc.transform,
             new Vector2(1f, topHeight),
             new Vector2(0f, maxHeight - topHeight/2f + 0.5f));
 
         for (int i = 0; i < bottomHeight; i++) {
-            Instantiate(obstacleTile, new Vector3(0, i, 0), Quaternion.identity, obstacleSubBot.transform);
+            Instantiate(obstacleTile, new Vector3(at.x, i - 3.5f, 0), rotation, obstacleSubBot.transform);
         }
 
         for (int i = maxHeight; i > maxHeight - topHeight; i--) {
-            Instantiate(obstacleTile, new Vector3(0, i, 0), Quaternion.identity, obstacleSubTop.transform);
+            Instantiate(obstacleTile, new Vector3(at.x, i - 3.5f, 0), rotation, obstacleSubTop.transform);
         }
 
-        return obstacle;
+        return oc;
     }
 
-    // TODO: add move method to move sub containers
+    public void Move(Queue<GameObject> obstacles, float movementMagnitude) {
+       foreach (var obstacle in obstacles)
+       {
+           var sub0 = obstacle.transform.GetChild(0).GetComponent<Rigidbody2D>();
+           var sub1 = obstacle.transform.GetChild(1).GetComponent<Rigidbody2D>();
+           sub0.MovePosition(new Vector2(sub0.position.x - movementMagnitude, sub0.position.y));
+           sub1.MovePosition(new Vector2(sub1.position.x - movementMagnitude, sub1.position.y));
+       } 
+    }
 
     void SetupObstacleSubContainer(GameObject osc, Transform parentTransform, Vector2 size, Vector2 offset)
     {
-        // TODO: Add rigidbody
-        osc.tag = "Obstacle Sub Container";
-        osc.transform.parent = parentTransform;
-        osc.AddComponent<BoxCollider2D>();
         var bc2d = osc.GetComponent<BoxCollider2D>();
         bc2d.size = size;
         bc2d.offset = offset;
-        bc2d.isTrigger = true;
     }
 }
