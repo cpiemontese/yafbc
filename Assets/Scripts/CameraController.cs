@@ -15,6 +15,7 @@ public class CameraController : MonoBehaviour
     Queue<GameObject> obstacles;
     List<Tuple<Rigidbody2D, Rigidbody2D>> zippedTiles;
 
+    bool resetting = false;
     float cameraHeight;
     float timeSinceLastSpawn;
     Vector3 topRight;
@@ -100,7 +101,10 @@ public class CameraController : MonoBehaviour
         switch (other.tag)
         {
             case "Obstacle Sub Top":
-                Destroy(obstacles.Dequeue());
+                if (!resetting)
+                {
+                    Destroy(obstacles.Dequeue());
+                }
                 break;
             case "Tile":
                 var oldY = other.gameObject.GetComponent<Rigidbody2D>().position.y;
@@ -122,9 +126,12 @@ public class CameraController : MonoBehaviour
 
     void ResetEventHandler(object o, EventArgs e)
     {
+        resetting = true;
         while (obstacles.Count > 0)
         {
+            Debug.Log(obstacles.Count);
             Destroy(obstacles.Dequeue());
         }
+        resetting = false;
     }
 }

@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2d.velocity = Vector2.zero;
         if (resetEventHandlers != null) 
         {
-            // resetEventHandlers(this, null);
+            resetEventHandlers(this, null);
         }
     }
 }
