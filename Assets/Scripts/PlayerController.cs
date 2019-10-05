@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        jumped = Input.GetKeyDown(KeyCode.Space);
+        jumped = Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1");
         timeInFlight += Time.deltaTime;
         timeInFlightText.text = "Time in flight: " + TimeSpan.FromSeconds(timeInFlight).ToString(@"hh\:mm\:ss"); 
     }
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Floor"
             || other.gameObject.tag == "Obstacle Sub Bot"
-            || other.gameObject.tag == "Obstalce Sub Top")
+            || other.gameObject.tag == "Obstacle Sub Top")
         {
             // Reset();
             Exit();
