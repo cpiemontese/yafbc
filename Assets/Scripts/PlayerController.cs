@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float constantVelocity = 1.0f;
     public float impulseMagnitude = 1.0f;
     public event EventHandler resetEventHandlers;
+    public event EventHandler exitEventHandlers;
 
     private bool jumped = false;
     private Rigidbody2D rigidbody2d;
@@ -43,7 +44,8 @@ public class PlayerController : MonoBehaviour
             || other.gameObject.tag == "Obstacle Sub Bot"
             || other.gameObject.tag == "Obstalce Sub Top")
         {
-            Reset();
+            // Reset();
+            Exit();
         }
     }
 
@@ -55,6 +57,12 @@ public class PlayerController : MonoBehaviour
         if (resetEventHandlers != null) 
         {
             resetEventHandlers(this, null);
+        }
+    }
+
+    void Exit() {
+        if (exitEventHandlers != null) {
+            exitEventHandlers(this, null);
         }
     }
 }

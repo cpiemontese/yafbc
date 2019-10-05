@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         playerController.resetEventHandlers += ResetEventHandler;
+        playerController.exitEventHandlers += ExitEventHandler;
 
         var camera = GetComponent<Camera>();
         var collider2d = GetComponent<BoxCollider2D>();
@@ -132,5 +134,9 @@ public class CameraController : MonoBehaviour
             Destroy(obstacles.Dequeue());
         }
         resetting = false;
+    }
+
+    void ExitEventHandler(object o, EventArgs e) {
+        SceneManager.LoadScene("RetryMenu");
     }
 }
