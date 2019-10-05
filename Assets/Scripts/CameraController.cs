@@ -129,7 +129,6 @@ public class CameraController : MonoBehaviour
         resetting = true;
         while (obstacles.Count > 0)
         {
-            Debug.Log(obstacles.Count);
             Destroy(obstacles.Dequeue());
         }
         resetting = false;

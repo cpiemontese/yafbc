@@ -9,6 +9,8 @@ TagManager:
   - Floor
   - Obstacle Container
   - Obstacle Sub Container
+  - Obstacle Sub Bot
+  - Obstacle Sub Top
   layers:
   - Default
   - TransparentFX
