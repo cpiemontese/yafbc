@@ -367,8 +367,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2fa7dcb1fb08f4f4db445efa12406d67, type: 2}
     m_FontSize: 15
@@ -446,8 +444,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 180ef42fb6b04314b8d6cc9cae37fac2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -535,10 +531,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -643,11 +639,6 @@ PrefabInstance:
       propertyPath: impulseMagnitude
       value: 1.25
       objectReference: {fileID: 0}
-    - target: {fileID: 5203325634772116119, guid: 43d781991258fdc4689e128ae6a81c8c,
-        type: 3}
-      propertyPath: m_Name
-      value: Main Character
-      objectReference: {fileID: 0}
     - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
         type: 3}
       propertyPath: timeInFlightText
@@ -717,6 +708,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203325634772116119, guid: 43d781991258fdc4689e128ae6a81c8c,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Character
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43d781991258fdc4689e128ae6a81c8c, type: 3}
