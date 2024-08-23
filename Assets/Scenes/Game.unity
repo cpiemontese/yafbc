@@ -647,7 +647,7 @@ PrefabInstance:
     - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
         type: 3}
       propertyPath: impulseMagnitude
-      value: 2.5
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
         type: 3}
