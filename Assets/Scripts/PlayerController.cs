@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public Text timeInFlightText;
     public float constantVelocity = 1.0f;
-    public float impulseMagnitude = 1.0f;
+    public float impulseMagnitude = 2.0f;
     public event EventHandler resetEventHandlers;
     public event EventHandler exitEventHandlers;
 
@@ -25,13 +25,13 @@ public class PlayerController : MonoBehaviour
     {
         jumped = Input.GetButtonDown("Jump") || Input.GetButtonDown("Fire1");
         timeInFlight += Time.deltaTime;
-        timeInFlightText.text = "Time in flight: " + TimeSpan.FromSeconds(timeInFlight).ToString(@"hh\:mm\:ss"); 
+        timeInFlightText.text = "Time in flight: " + TimeSpan.FromSeconds(timeInFlight).ToString(@"hh\:mm\:ss");
     }
 
     void FixedUpdate()
     {
         Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
-        rigidbody2D.velocity = new Vector2(constantVelocity, rigidbody2D.velocity.y);
+        // rigidbody2D.velocity = new Vector2(constantVelocity, rigidbody2D.velocity.y);
         if (jumped)
         {
             rigidbody2D.AddForce(impulseMagnitude * Vector2.up, ForceMode2D.Impulse);
@@ -54,14 +54,16 @@ public class PlayerController : MonoBehaviour
         timeInFlight = 0.0f;
         transform.SetPositionAndRotation(Vector3.zero, transform.rotation);
         rigidbody2d.velocity = Vector2.zero;
-        if (resetEventHandlers != null) 
+        if (resetEventHandlers != null)
         {
             resetEventHandlers(this, null);
         }
     }
 
-    void Exit() {
-        if (exitEventHandlers != null) {
+    void Exit()
+    {
+        if (exitEventHandlers != null)
+        {
             exitEventHandlers(this, null);
         }
     }
