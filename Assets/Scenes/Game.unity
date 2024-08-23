@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnTimer: 1.25
   spawnProbability: 0.75
-  tileMovementSpeed: 2
+  tileMovementSpeed: 4
   topTile: {fileID: 913662068005882416, guid: a1b0e0d388ac8ab4eb6108d43fce98ea, type: 3}
   bottomTile: {fileID: 7167748653520127785, guid: 33e960a614e5ba9489a84197a0b1678c,
     type: 3}
@@ -647,7 +647,12 @@ PrefabInstance:
     - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
         type: 3}
       propertyPath: impulseMagnitude
-      value: 1.25
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 607554529037841968, guid: 43d781991258fdc4689e128ae6a81c8c,
+        type: 3}
+      propertyPath: constantVelocity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5203325634772116105, guid: 43d781991258fdc4689e128ae6a81c8c,
         type: 3}
